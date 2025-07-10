@@ -16,8 +16,13 @@ public class MetersController : ControllerBase
     }
 
     [HttpPost("meter-reading-uploads")]
-    public async Task<IActionResult> UploadMeters(/*[FileExtensions(Extensions = ".csv")]*/ IFormFile file)
+    public async Task<IActionResult> UploadMeters(IFormFile file)
     {
+        if (file.ContentType != "text/csv")
+        {
+            return BadRequest("Only .csv format is supported");
+        }
+
         var result = await _service.UploadMeters(file);
 
         return Ok(result);
