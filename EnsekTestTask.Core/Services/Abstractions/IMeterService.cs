@@ -5,5 +5,5 @@ namespace EnsekTestTask.Core.Services.Abstractions;
 
 public interface IMeterService
 {
-    Task<ParseAccountsResponse> UploadMeters(IFormFile file);
+    Task<ParseMetersResponse> UploadMeters(IFormFile file);
 }

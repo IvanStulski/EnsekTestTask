@@ -1,6 +1,6 @@
 ﻿namespace EnsekTestTask.Core.Models;
 
-public class ParseAccountsResponse
+public class ParseMetersResponse
 {
     public int Successful { get; set; }
     public int WithErrors { get; set; }

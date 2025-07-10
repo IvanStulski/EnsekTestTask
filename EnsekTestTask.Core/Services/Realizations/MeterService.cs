@@ -23,7 +23,7 @@ public class MeterService : IMeterService
         _context = context;        
     }
 
-    public async Task<ParseAccountsResponse> UploadMeters(IFormFile file)
+    public async Task<ParseMetersResponse> UploadMeters(IFormFile file)
     {
         using var stream = file.OpenReadStream();
         using var parser = new TextFieldParser(stream);
@@ -73,13 +73,16 @@ public class MeterService : IMeterService
         await _context.Meters.AddRangeAsync(newMeters);
         await _context.SaveChangesAsync();
 
-        return new ParseAccountsResponse()
+        return new ParseMetersResponse()
         {
             Successful = newMeters.Count,
             WithErrors = withErrors
         };
     }
 
-    private bool ValidateMeter(Meter meter, IEnumerable<Meter> meters, IEnumerable<long> accountIds) =>
-        accountIds.Contains(meter.AccountId) && !meters.Contains(meter, new MeterEqulityComparer());
+    private bool ValidateMeter(Meter meter, IEnumerable<Meter> meters, IEnumerable<long> accountIds)
+    {
+        return accountIds.Contains(meter.AccountId) && !meters.Contains(meter, new MeterEqulityComparer()) &&
+            !meters.Any(x => x.MeterReadingDateTime > meter.MeterReadingDateTime);
+    }
 }
