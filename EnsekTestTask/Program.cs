@@ -1,3 +1,4 @@
+using EnsekTestTask.Core;
 using EnsekTestTask.Database;
 using EnsekTestTask.Extensions;
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOptions();
 builder.ConfigureOptions();
 builder.Services.AddDbContext();
+builder.Services.AddServices();
 
 var app = builder.Build();
 

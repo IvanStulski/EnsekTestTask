@@ -7,6 +7,11 @@ public class ApplicationDbContext : DbContext
     public virtual DbSet<Account> Accounts { get; set; }
     public virtual DbSet<Meter> Meters { get; set; }
 
+    public ApplicationDbContext()
+    {
+        
+    }
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {

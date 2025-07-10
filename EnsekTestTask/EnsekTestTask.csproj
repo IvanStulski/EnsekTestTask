@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EnsekTestTask.Core\EnsekTestTask.Core.csproj" />
     <ProjectReference Include="..\EnsekTestTask.Database\EnsekTestTask.Database.csproj" />
   </ItemGroup>
 
