@@ -17,7 +17,7 @@ namespace EnsekTestTask.Database.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     MeterReadingDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    MeterReadValue = table.Column<string>(type: "text", nullable: false),
+                    MeterReadValue = table.Column<int>(type: "integer", nullable: false),
                     AccountId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>

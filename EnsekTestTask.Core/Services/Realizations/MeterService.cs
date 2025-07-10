@@ -50,7 +50,7 @@ public class MeterService : IMeterService
                  && int.TryParse(fields[MeterReadValueIndex], out var readValue))
             {
                 meter.AccountId = accountId;
-                meter.MeterReadingDateTime = readingDateTime;
+                meter.MeterReadingDateTime = readingDateTime.ToUniversalTime();
                 meter.MeterReadValue = readValue;
             }
             else

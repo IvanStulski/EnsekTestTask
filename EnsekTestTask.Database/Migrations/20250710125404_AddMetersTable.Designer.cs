@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EnsekTestTask.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250710104232_FixMeterReadValueTypeToInt")]
-    partial class FixMeterReadValueTypeToInt
+    [Migration("20250710125404_AddMetersTable")]
+    partial class AddMetersTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
