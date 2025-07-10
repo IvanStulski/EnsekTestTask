@@ -11,6 +11,7 @@ namespace EnsekTestTask.Core.Services.Realizations;
 
 public class MeterService : IMeterService
 {
+    private const int LengthOfReadValue = 5;
     private const int AccountIdIndex = 0;
     private const int MeterReadingDateTimeIndex = 1;
     private const int MeterReadValueIndex = 2;
@@ -82,7 +83,9 @@ public class MeterService : IMeterService
 
     private bool ValidateMeter(Meter meter, IEnumerable<Meter> meters, IEnumerable<long> accountIds)
     {
-        return accountIds.Contains(meter.AccountId) && !meters.Contains(meter, new MeterEqulityComparer()) &&
-            !meters.Any(x => x.MeterReadingDateTime > meter.MeterReadingDateTime);
+        return accountIds.Contains(meter.AccountId) &&
+            !meters.Contains(meter, new MeterEqulityComparer()) &&
+            !meters.Any(x => x.MeterReadingDateTime > meter.MeterReadingDateTime) &&
+            meter.MeterReadValue.ToString().Length == LengthOfReadValue;
     }
 }
